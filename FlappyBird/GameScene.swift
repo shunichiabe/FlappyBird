@@ -319,13 +319,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         }else if (contact.bodyA.categoryBitMask & itemCategory) == itemCategory || (contact.bodyB.categoryBitMask & itemCategory) == itemCategory {
             // アイテムとぶつかった時の処理
             itemScore += 1
-            itemscoreLabelNode.text = "Score:\(itemScore)"
+            itemscoreLabelNode.text = "Item score:\(itemScore)"
             item.children.first?.removeFromParent()
-            playSound(name: "coin")
+            playSound(name: "coin01")
             
         } else {
             
             print("GameOver")
+            itemScore = 0
+            itemscoreLabelNode.text = "Item score:\(itemScore)"
             
             scrollNode.speed = 0
             
